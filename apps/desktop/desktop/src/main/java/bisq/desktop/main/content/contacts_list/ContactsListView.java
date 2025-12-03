@@ -94,7 +94,10 @@ public class ContactsListView extends View<VBox, ContactsListModel, ContactsList
                 richTableView.sort();
             }
         });
-
+        
+        if(learnMoreLink!= null) {
+            learnMoreLink.setOnAction(e ->  richTableView.openLearnMorePopup());
+        }
         maybeShowLearnMorePopup();
     }
 
@@ -194,7 +197,6 @@ public class ContactsListView extends View<VBox, ContactsListModel, ContactsList
         label.getStyleClass().addAll("thin-text", "very-large-text");
 
         learnMoreLink = new Hyperlink(Res.get("contactsList.table.placeholder.hyperlink"));
-        learnMoreLink.setOnAction(e -> richTableView.openLearnMorePopup());
 
         VBox contentBox = new VBox(20);
         contentBox.getChildren().addAll(label, learnMoreLink);
